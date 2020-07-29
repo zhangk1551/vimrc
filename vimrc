@@ -20,11 +20,8 @@ set hlsearch
 set incsearch
 set smartcase
 
-set undofile
-
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
-set undodir=~/.vim/.undo//
 
 set wildmenu
 set wildmode=longest:list,full
