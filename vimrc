@@ -1,3 +1,4 @@
+set encoding=UTF-8
 syntax on
 
 set termguicolors
@@ -20,8 +21,7 @@ set hlsearch
 set incsearch
 set smartcase
 
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
+set directory=~/.vim/.swp/
 
 set wildmenu
 set wildmode=longest:list,full

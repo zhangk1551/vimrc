@@ -6,5 +6,8 @@ if [ `basename "$PWD"` != ".vim" ]; then
   exit 1
 fi
 
-git submodule update --recursive
-cp colors/base16/colors/base16-default-dark.vim colors/base16-default-dark.vim
+mkdir .swp
+
+git submodule update --init --recursive
+
+./update.sh
