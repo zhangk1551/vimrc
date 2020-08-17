@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-if [ `basename "$PWD"` != ".vim" ]; then
-  echo "Error: This script should be run under .vim directory."
+if [ `basename "$PWD"` != "vimrc" ]; then
+  echo "Error: This script should be run under vimrc directory."
   exit 1
 fi
 
