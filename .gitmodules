@@ -4,3 +4,6 @@
 [submodule "pack/plugins/start/ack.vim"]
 	path = pack/plugins/start/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "pack/plugins/start/LeaderF"]
+	path = pack/plugins/start/LeaderF
+	url = git@github.com:Yggdroot/LeaderF.git

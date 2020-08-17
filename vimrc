@@ -33,3 +33,5 @@ colorscheme base16-default-dark
 
 let g:ackprg = 'ag --vimgrep'
 cnoreabbrev ag Ack!
+
+cnoreabbrev f Leaderf!

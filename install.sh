@@ -10,4 +10,8 @@ mkdir .swp
 
 git submodule update --init --recursive
 
+cd pack/plugins/start/LeaderF
+./install.sh
+cd ../../../../
+
 ./update.sh
