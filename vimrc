@@ -3,8 +3,6 @@ syntax on
 
 set termguicolors
 
-set showmode
-
 set autoindent
 set expandtab
 set softtabstop=2
@@ -35,3 +33,6 @@ let g:ackprg = 'ag --vimgrep'
 cnoreabbrev ag Ack!
 
 cnoreabbrev f Leaderf!
+
+set laststatus=2
+set noshowmode
