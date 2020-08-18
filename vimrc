@@ -36,3 +36,10 @@ cnoreabbrev f Leaderf!
 
 set laststatus=2
 set noshowmode
+let g:lightline = {
+\  'active': {
+\    'right' : [ [ 'lineinfo' ],
+\                [ 'percent' ],
+\                [ 'fileencoding' ] ],
+\  },
+\}
