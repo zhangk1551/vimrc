@@ -34,12 +34,35 @@ cnoreabbrev ag Ack!
 
 cnoreabbrev f Leaderf!
 
+nnoremap <leader>q :call asyncrun#quickfix_toggle(8)<cr>
+cnoreabbrev a AsyncRun
+cnoreabbrev as AsyncStop
+
+let g:asyncrun_status = ''
+function! GetAsyncrunStatus()
+  :if &ft == 'qf'
+  : return g:asyncrun_status
+  :endif
+  return ''
+endfunction
+
 set laststatus=2
 set noshowmode
 let g:lightline = {
-\  'active': {
-\    'right' : [ [ 'lineinfo' ],
-\                [ 'percent' ],
-\                [ 'fileencoding' ] ],
-\  },
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'readonly', 'filename' ],
+\             [ 'asyncrun' ] ],
+\   'right' : [ [ 'lineinfo' ],
+\               [ 'percent' ],
+\               [ 'fileencoding' ] ],
+\ },
+\ 'inactive': {
+\   'left': [ [ 'filename' ],
+\             [ 'asyncrun' ] ],
+\   'right' : [ ],
+\ },
+\ 'component_function' : {
+\   'asyncrun' : 'GetAsyncrunStatus'
+\ }
 \}
