@@ -34,7 +34,10 @@ colorscheme base16-default-dark
 let g:ackprg = 'ag --vimgrep'
 cnoreabbrev ag Ack!
 
-cnoreabbrev f Leaderf!
+cnoreabbrev f Leaderf
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+let g:Lf_Gtagsconf = '/usr/share/gtags/gtags.conf'
 
 nnoremap <leader>q :call asyncrun#quickfix_toggle(8)<cr>
 cnoreabbrev a AsyncRun
