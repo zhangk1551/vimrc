@@ -19,7 +19,9 @@ set hlsearch
 set incsearch
 set smartcase
 
-set directory=~/.vim/.swp/
+set backupdir=~/.vimbackup/
+set directory=~/.vimswp/
+set undodir=~/.vimundo/
 
 set wildmenu
 set wildmode=longest:list,full

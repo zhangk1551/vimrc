@@ -19,3 +19,9 @@
 [submodule "pack/plugins/start/asyncrun.vim"]
 	path = pack/plugins/start/asyncrun.vim
 	url = git@github.com:skywind3000/asyncrun.vim.git
+[submodule "pack/plugins/start/gen_tags.vim"]
+	path = pack/plugins/start/gen_tags.vim
+	url = git@github.com:jsfaint/gen_tags.vim.git
+[submodule "pack/plugins/start/vim-unimpaired"]
+	path = pack/plugins/start/vim-unimpaired
+	url = git@github.com:tpope/vim-unimpaired.git
