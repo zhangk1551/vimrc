@@ -28,3 +28,6 @@
 [submodule "pack/plugins/start/asynctasks.vim"]
 	path = pack/plugins/start/asynctasks.vim
 	url = git@github.com:skywind3000/asynctasks.vim.git
+[submodule "pack/plugins/start/coc.nvim"]
+	path = pack/plugins/start/coc.nvim
+	url = git@github.com:neoclide/coc.nvim.git
