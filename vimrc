@@ -19,7 +19,6 @@ set hlsearch
 set incsearch
 set smartcase
 
-set undofile
 set backupdir=~/.vimbackup/
 set directory=~/.vimswp/
 set undodir=~/.vimundo/
