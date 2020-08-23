@@ -35,6 +35,9 @@ let g:ackprg = 'ag --vimgrep'
 cnoreabbrev ag Ack!
 
 cnoreabbrev f Leaderf
+nnoremap <leader>t :Leaderf bufTag<cr><Tab>
+nnoremap <esc>d :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR> 
+nnoremap <esc>r :<C-U><C-R>=printf("Leaderf! gtags -r %s", expand("<cword>"))<CR><CR> 
 let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_Gtagslabel = 'native-pygments'
 let g:Lf_Gtagsconf = '/usr/share/gtags/gtags.conf'
