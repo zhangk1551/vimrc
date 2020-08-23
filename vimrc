@@ -42,15 +42,26 @@ let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_Gtagslabel = 'native-pygments'
 let g:Lf_Gtagsconf = '/usr/share/gtags/gtags.conf'
 
+function! GetAsyncrunSaveAndRunCommand()
+  if &ft == 'python'
+    execute "w"
+    execute "AsyncRun -raw python %"
+    execute "copen"
+  else
+    echo "file type not support"
+  endif
+endfunction
+
 nnoremap <leader>q :call asyncrun#quickfix_toggle(8)<cr>
+nnoremap <leader>r :call GetAsyncrunSaveAndRunCommand()<cr>
 cnoreabbrev a AsyncRun
 cnoreabbrev as AsyncStop
 
 let g:asyncrun_status = ''
 function! GetAsyncrunStatus()
-  :if &ft == 'qf'
-  : return g:asyncrun_status
-  :endif
+  if &ft == 'qf'
+    return g:asyncrun_status
+  endif
   return ''
 endfunction
 
@@ -75,4 +86,4 @@ let g:lightline = {
 \ }
 \}
 
-let g:coc_global_extensions = ['coc-json', 'coc-python']
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-word']
