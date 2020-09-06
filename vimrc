@@ -31,11 +31,21 @@ set list
 
 colorscheme base16-default-dark
 
+nnoremap <C-c> :q<cr><Tab>
+
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <esc>f <S-Right>
+cnoremap <esc>b <S-Left>
+
 let g:ackprg = 'ag --vimgrep'
 cnoreabbrev ag Ack!
 
 cnoreabbrev f Leaderf
 nnoremap <leader>t :Leaderf bufTag<cr><Tab>
+nnoremap <leader>m :Leaderf mru<cr><Tab>
+nnoremap <leader>g :Leaderf rg<cr><Tab>
 nnoremap <esc>d :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR> 
 nnoremap <esc>r :<C-U><C-R>=printf("Leaderf! gtags -r %s", expand("<cword>"))<CR><CR> 
 let g:Lf_GtagsAutoGenerate = 1
