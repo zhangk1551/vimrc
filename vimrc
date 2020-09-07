@@ -39,9 +39,6 @@ cnoremap <C-B> <Left>
 cnoremap <esc>f <S-Right>
 cnoremap <esc>b <S-Left>
 
-let g:ackprg = 'ag --vimgrep'
-cnoreabbrev ag Ack!
-
 cnoreabbrev f Leaderf
 nnoremap <leader>t :Leaderf bufTag<cr><Tab>
 nnoremap <leader>m :Leaderf mru<cr><Tab>
@@ -96,4 +93,9 @@ let g:lightline = {
 \ }
 \}
 
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-word']
+set updatetime=300
+nmap <leader>cn <Plug>(coc-rename)
+nmap <leader>cf <Plug>(coc-fix-current)
+nmap <leader>cd <Plug>(coc-definition)
+nmap <leader>cr <Plug>(coc-references)
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-sh', 'coc-word']
