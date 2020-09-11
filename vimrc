@@ -98,4 +98,4 @@ nmap <leader>cn <Plug>(coc-rename)
 nmap <leader>cf <Plug>(coc-fix-current)
 nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cr <Plug>(coc-references)
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-sh', 'coc-word']
+let g:coc_global_extensions = ['coc-java', 'coc-json', 'coc-python', 'coc-sh', 'coc-snippets', 'coc-word']
