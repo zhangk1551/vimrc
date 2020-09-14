@@ -6,8 +6,6 @@ if [ `basename "$PWD"` != "vimrc" ]; then
   exit 1
 fi
 
-mkdir .swp
-
 git submodule update --init --recursive
 
 cd pack/plugins/start/LeaderF

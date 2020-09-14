@@ -32,12 +32,22 @@ set list
 colorscheme base16-default-dark
 
 nnoremap <C-c> :q<cr><Tab>
+nnoremap <C-s> :w<cr><Tab>
 
 cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
 cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
 cnoremap <esc>f <S-Right>
 cnoremap <esc>b <S-Left>
+
+inoremap <C-A> <Home>
+cnoremap <C-E> <End>
+inoremap <C-F> <Right>
+inoremap <C-B> <Left>
+inoremap <esc>f <S-Right>
+inoremap <esc>b <S-Left>
+
 
 cnoreabbrev f Leaderf
 nnoremap <leader>t :Leaderf bufTag<cr><Tab>
