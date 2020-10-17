@@ -31,8 +31,9 @@ set list
 
 colorscheme base16-default-dark
 
-nnoremap <C-c> :q<cr><Tab>
-nnoremap <C-s> :w<cr><Tab>
+nnoremap <C-c> :q<cr>
+nnoremap <C-s> :w<cr>
+inoremap <C-s> <Esc>:w<cr>
 
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
