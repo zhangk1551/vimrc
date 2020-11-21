@@ -1,3 +1,5 @@
+" General
+
 set encoding=UTF-8
 syntax on
 
@@ -49,6 +51,8 @@ inoremap <C-B> <Left>
 inoremap <esc>f <S-Right>
 inoremap <esc>b <S-Left>
 
+
+" Plugins
 
 cnoreabbrev f Leaderf
 nnoremap <leader>t :Leaderf bufTag<cr><Tab>
