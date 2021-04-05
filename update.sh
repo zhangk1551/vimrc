@@ -6,7 +6,7 @@ if [ `basename "$PWD"` != "vimrc" ]; then
   exit 1
 fi
 
-git submodule update --recursive
+git submodule update --recursive --remote
 cp colors/base16/colors/base16-default-dark.vim colors/base16-default-dark.vim
 
 # By default don't reinstall LeaderF here, so some C extension updates in

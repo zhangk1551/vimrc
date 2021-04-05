@@ -13,3 +13,7 @@ cd pack/plugins/start/LeaderF
 cd ../../../../
 
 ./update.sh
+
+mkdir ~/.vimbackup
+mkdir ~/.vimswp
+mkdir ~/.vimundo
