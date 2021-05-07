@@ -114,5 +114,6 @@ nmap <leader>cf <Plug>(coc-fix-current)
 nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cr <Plug>(coc-references)
 nnoremap <leader>ff :call CocAction('format')<cr>
+noremap <leader>o  :<C-u>CocList outline<cr>
 
-let g:coc_global_extensions = ['coc-html', 'coc-java', 'coc-json', 'coc-python', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-word', 'coc-xml']
+let g:coc_global_extensions = ['coc-html', 'coc-json','coc-pyright', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-word', 'coc-xml']

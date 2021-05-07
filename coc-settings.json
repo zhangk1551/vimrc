@@ -1,4 +1,5 @@
 {
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["Python"]
+  "coc.preferences.formatOnSaveFiletypes": ["Python"],
+  "python.formatting.provider": "autopep8"
 }
