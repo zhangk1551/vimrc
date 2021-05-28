@@ -37,6 +37,17 @@ nnoremap <C-c> :q<cr>
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <Esc>:w<cr>
 
+" tmux style window operations
+nnoremap <C-h>o <C-w><C-w>
+nnoremap <esc>r <C-w><C-w>
+nnoremap <C-h>c :tab sp<cr>
+nnoremap <C-h>" <C-w>s
+nnoremap <C-h>% <C-w>v
+
+nnoremap <esc>e :bp<cr>
+nnoremap <C-x> :bd<cr>
+nnoremap <esc>w gt
+
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-F> <Right>
@@ -45,22 +56,18 @@ cnoremap <esc>f <S-Right>
 cnoremap <esc>b <S-Left>
 
 inoremap <C-A> <Home>
-cnoremap <C-E> <End>
+inoremap <C-E> <End>
 inoremap <C-F> <Right>
 inoremap <C-B> <Left>
 inoremap <esc>f <S-Right>
 inoremap <esc>b <S-Left>
 
-nnoremap <silent> <esc>w :bp<CR>
-
 " Plugins
 
 cnoreabbrev f Leaderf
 nnoremap <leader>t :Leaderf --left bufTag<cr><Tab>
-nnoremap <leader>m :Leaderf mru<cr><Tab>
+nnoremap <leader>m :Leaderf mru<cr>
 nnoremap <leader>g :Leaderf rg<cr>
-nnoremap <esc>d :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR> 
-nnoremap <esc>r :<C-U><C-R>=printf("Leaderf! gtags -r %s", expand("<cword>"))<CR><CR> 
 let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_Gtagslabel = 'native-pygments'
 let g:Lf_Gtagsconf = '/usr/share/gtags/gtags.conf'
@@ -111,9 +118,9 @@ let g:lightline = {
 
 set updatetime=300
 nmap <leader>cn <Plug>(coc-rename)
-nmap <leader>cf <Plug>(coc-fix-current)
-nmap <leader>cd <Plug>(coc-definition)
-nmap <leader>cr <Plug>(coc-references)
+nmap <leader>fx <Plug>(coc-fix-current)
+nmap <esc>d <Plug>(coc-definition)
+nmap <esc>f <Plug>(coc-references)
 nnoremap <leader>ff :call CocAction('format')<cr>
 noremap <leader>o  :<C-u>CocList outline<cr>
 

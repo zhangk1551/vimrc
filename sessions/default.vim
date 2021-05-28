@@ -5,9 +5,10 @@ set cpo&vim
 inoremap <silent> <expr> <Plug>(coc-snippets-expand-jump) coc#_insert_key('notify', 'snippets-expand-jump', 1)
 inoremap <silent> <expr> <Plug>(coc-snippets-expand) coc#_insert_key('notify', 'snippets-expand', 1)
 inoremap <silent> <Plug>CocRefresh =coc#_complete()
-inoremap <silent> <SNR>31_AutoPairsReturn =AutoPairsReturn()
+inoremap <silent> <SNR>32_AutoPairsReturn =AutoPairsReturn()
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
+inoremap <C-E> <End>
 inoremap <C-A> <Home>
 cnoremap <C-B> <Left>
 cnoremap <C-F> <Right>
@@ -15,22 +16,28 @@ cnoremap <C-E> <End>
 cnoremap <C-A> <Home>
 inoremap <C-S> :w
 nnoremap  :q
+nnoremap  
+nnoremap % v
+nnoremap " s
+nnoremap c :tab sp
+nnoremap o 
 nnoremap  :w
-nnoremap r :=printf("Leaderf! gtags -r %s", expand("<cword>")) 
-nnoremap d :=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>")) 
-nnoremap <silent> w :bp
+nnoremap  :bd
+nmap f <Plug>(coc-references)
+nmap d <Plug>(coc-definition)
+nnoremap w gt
+nnoremap e :bp
+nnoremap r 
 nnoremap <silent> \b :LeaderfBuffer
 nnoremap <silent> \f :LeaderfFile
 noremap \o :CocList outline
 nnoremap \ff :call CocAction('format')
-nmap \cr <Plug>(coc-references)
-nmap \cd <Plug>(coc-definition)
-nmap \cf <Plug>(coc-fix-current)
+nmap \fx <Plug>(coc-fix-current)
 nmap \cn <Plug>(coc-rename)
 nnoremap \r :call GetAsyncrunSaveAndRunCommand()
 nnoremap \q :call asyncrun#quickfix_toggle(8)
 nnoremap \g :Leaderf rg
-nnoremap \m :Leaderf mru	
+nnoremap \m :Leaderf mru
 nnoremap \t :Leaderf --left bufTag	
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
@@ -141,12 +148,19 @@ noremap <silent> <Plug>LeaderfFileBottom :Leaderf file --bottom
 noremap <silent> <Plug>LeaderfFileTop :Leaderf file --top
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
+nnoremap <C-X> :bd
+nnoremap <C-H> 
+nnoremap <C-H>% v
+nnoremap <C-H>" s
+nnoremap <C-H>c :tab sp
+nnoremap <C-H>o 
 nnoremap <C-S> :w
 nnoremap <C-C> :q
 inoremap  <Home>
 cnoremap  <Home>
 inoremap  <Left>
 cnoremap  <Left>
+inoremap  <End>
 cnoremap  <End>
 inoremap  <Right>
 cnoremap  <Right>
@@ -198,8 +212,8 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd sessions/default.vim
-edit sessions/default.vim
+$argadd vimrc
+edit vimrc
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -392,7 +406,7 @@ normal! zt
 keepjumps 1
 normal! 0
 tabnext 1
-badd +0 sessions/default.vim
+badd +1 vimrc
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
