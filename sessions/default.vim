@@ -5,7 +5,7 @@ set cpo&vim
 inoremap <silent> <expr> <Plug>(coc-snippets-expand-jump) coc#_insert_key('notify', 'snippets-expand-jump', 1)
 inoremap <silent> <expr> <Plug>(coc-snippets-expand) coc#_insert_key('notify', 'snippets-expand', 1)
 inoremap <silent> <Plug>CocRefresh =coc#_complete()
-inoremap <silent> <SNR>27_AutoPairsReturn =AutoPairsReturn()
+inoremap <silent> <SNR>31_AutoPairsReturn =AutoPairsReturn()
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 inoremap <C-A> <Home>
@@ -18,20 +18,20 @@ nnoremap  :q
 nnoremap  :w
 nnoremap r :=printf("Leaderf! gtags -r %s", expand("<cword>")) 
 nnoremap d :=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>")) 
+nnoremap <silent> w :bp
 nnoremap <silent> \b :LeaderfBuffer
 nnoremap <silent> \f :LeaderfFile
 noremap \o :CocList outline
 nnoremap \ff :call CocAction('format')
-nmap \co <Plug>(coc-)
 nmap \cr <Plug>(coc-references)
 nmap \cd <Plug>(coc-definition)
 nmap \cf <Plug>(coc-fix-current)
 nmap \cn <Plug>(coc-rename)
 nnoremap \r :call GetAsyncrunSaveAndRunCommand()
 nnoremap \q :call asyncrun#quickfix_toggle(8)
-nnoremap \g :Leaderf rg	
+nnoremap \g :Leaderf rg
 nnoremap \m :Leaderf mru	
-nnoremap \t :Leaderf bufTag	
+nnoremap \t :Leaderf --left bufTag	
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 vnoremap <silent> <Plug>(coc-snippets-select) :call coc#rpc#notify('doKeymap', ['snippets-select'])
@@ -198,8 +198,8 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd coc-settings.json
-edit coc-settings.json
+$argadd sessions/default.vim
+edit sessions/default.vim
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -291,8 +291,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'json'
-setlocal filetype=json
+if &filetype != 'vim'
+setlocal filetype=vim
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -362,8 +362,8 @@ setlocal statusline=%{lightline#link()}%#LightlineLeft_active_0#%(\ %{lightline#
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'json'
-setlocal syntax=json
+if &syntax != 'vim'
+setlocal syntax=vim
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -385,14 +385,14 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 3 - ((2 * winheight(0) + 24) / 48)
+let s:l = 1 - ((0 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3
+keepjumps 1
 normal! 0
 tabnext 1
-badd +0 coc-settings.json
+badd +0 sessions/default.vim
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
