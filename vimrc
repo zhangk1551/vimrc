@@ -36,11 +36,14 @@ colorscheme base16-default-dark
 nnoremap <C-c> :q<cr>
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <Esc>:w<cr>
+nnoremap <C-S> :w !sudo tee %<cr>
+inoremap <C-S> <Esc>:w !sudo tee %<cr>
 
 " tmux style window operations
 nnoremap <C-h>o <C-w><C-w>
 nnoremap <esc>r <C-w><C-w>
 nnoremap <C-h>c :tab sp<cr>
+nnoremap <C-h>cc <C-w>T
 nnoremap <C-h>" <C-w>s
 nnoremap <C-h>% <C-w>v
 
@@ -62,11 +65,14 @@ inoremap <C-B> <Left>
 inoremap <esc>f <S-Right>
 inoremap <esc>b <S-Left>
 
+nnoremap <leader>n :Vex<cr>
+nnoremap <leader>m :marks<cr>
+
 " Plugins
 
 cnoreabbrev f Leaderf
 nnoremap <leader>t :Leaderf --left bufTag<cr><Tab>
-nnoremap <leader>m :Leaderf mru<cr>
+nnoremap <leader>r :Leaderf mru<cr>
 nnoremap <leader>g :Leaderf rg<cr>
 let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_Gtagslabel = 'native-pygments'
@@ -83,7 +89,7 @@ function! GetAsyncrunSaveAndRunCommand()
 endfunction
 
 nnoremap <leader>q :call asyncrun#quickfix_toggle(8)<cr>
-nnoremap <leader>r :call GetAsyncrunSaveAndRunCommand()<cr>
+nnoremap <leader>rr :call GetAsyncrunSaveAndRunCommand()<cr>
 cnoreabbrev a AsyncRun
 cnoreabbrev as AsyncStop
 
@@ -120,6 +126,7 @@ set updatetime=300
 nmap <leader>cn <Plug>(coc-rename)
 nmap <leader>fx <Plug>(coc-fix-current)
 nmap <esc>d <Plug>(coc-definition)
+nmap <esc>s <Plug>(coc-type-definition)
 nmap <esc>f <Plug>(coc-references)
 nnoremap <leader>ff :call CocAction('format')<cr>
 noremap <leader>o  :<C-u>CocList outline<cr>

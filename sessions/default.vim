@@ -16,14 +16,15 @@ cnoremap <C-E> <End>
 cnoremap <C-A> <Home>
 inoremap <C-S> :w
 nnoremap  :q
-nnoremap  
 nnoremap % v
 nnoremap " s
+nnoremap cc T
 nnoremap c :tab sp
 nnoremap o 
 nnoremap  :w
 nnoremap  :bd
 nmap f <Plug>(coc-references)
+nmap s <Plug>(coc-type-definition)
 nmap d <Plug>(coc-definition)
 nnoremap w gt
 nnoremap e :bp
@@ -34,11 +35,13 @@ noremap \o :CocList outline
 nnoremap \ff :call CocAction('format')
 nmap \fx <Plug>(coc-fix-current)
 nmap \cn <Plug>(coc-rename)
-nnoremap \r :call GetAsyncrunSaveAndRunCommand()
+nnoremap \rr :call GetAsyncrunSaveAndRunCommand()
 nnoremap \q :call asyncrun#quickfix_toggle(8)
 nnoremap \g :Leaderf rg
-nnoremap \m :Leaderf mru
+nnoremap \r :Leaderf mru
 nnoremap \t :Leaderf --left bufTag	
+nnoremap \m :marks
+nnoremap \n :Vex
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 vnoremap <silent> <Plug>(coc-snippets-select) :call coc#rpc#notify('doKeymap', ['snippets-select'])
@@ -149,9 +152,9 @@ noremap <silent> <Plug>LeaderfFileTop :Leaderf file --top
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 nnoremap <C-X> :bd
-nnoremap <C-H> 
 nnoremap <C-H>% v
 nnoremap <C-H>" s
+nnoremap <C-H>cc T
 nnoremap <C-H>c :tab sp
 nnoremap <C-H>o 
 nnoremap <C-S> :w
@@ -213,7 +216,7 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd vimrc
-edit vimrc
+edit ~/work/vimrc
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -231,10 +234,17 @@ inoremap <buffer> <silent> <M-]> =AutoPairsMoveCharacter(']')
 inoremap <buffer> <silent> <M-[> =AutoPairsMoveCharacter('[')
 inoremap <buffer> <silent> <M-)> =AutoPairsMoveCharacter(')')
 inoremap <buffer> <silent> <M-(> =AutoPairsMoveCharacter('(')
+nmap <buffer>  <Plug>NetrwHideEdit
+nmap <buffer> <nowait> <silent>  <Plug>NetrwRefresh
+nmap <buffer> <nowait> <silent>  <Plug>NetrwLocalBrowseCheck
+nmap <buffer> <nowait> <silent>  <Plug>NetrwServerEdit
+nmap <buffer> <nowait> <silent> % <Plug>NetrwOpenFile
+nmap <buffer> <nowait> <silent> - <Plug>NetrwBrowseUpDir
 inoremap <buffer> <silent> § =AutoPairsMoveCharacter('''')
 inoremap <buffer> <silent> ¢ =AutoPairsMoveCharacter('"')
 inoremap <buffer> <silent> © =AutoPairsMoveCharacter(')')
 inoremap <buffer> <silent> ¨ =AutoPairsMoveCharacter('(')
+nmap <buffer> <nowait> <silent> C <Plug>NetrwSetChgwin
 inoremap <buffer> <silent> î :call AutoPairsJump()a
 inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
 inoremap <buffer> <silent> â =AutoPairsBackInsert()
@@ -249,10 +259,22 @@ nmap <buffer> \hu <Plug>(GitGutterUndoHunk)
 nmap <buffer> \hs <Plug>(GitGutterStageHunk)
 xmap <buffer> \hs <Plug>(GitGutterStageHunk)
 nmap <buffer> ]c <Plug>(GitGutterNextHunk)
+nmap <buffer> <nowait> <silent> a <Plug>NetrwHide_a
 xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
 omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
+nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
+nmap <buffer> <nowait> <silent> cB <Plug>NetrwBadd_cB
+nmap <buffer> <nowait> <silent> cb <Plug>NetrwBadd_cb
+nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
 xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
 omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
+nnoremap <buffer> <F1> :he netrw-quickhelp
+nmap <buffer> <nowait> <silent> <S-CR> <Plug>NetrwTreeSqueeze
+nnoremap <buffer> <silent> <S-Up> :Pexplore
+nnoremap <buffer> <silent> <S-Down> :Nexplore
+nmap <buffer> <C-H> <Plug>NetrwHideEdit
+nmap <buffer> <nowait> <silent> <C-R> <Plug>NetrwServerEdit
+nmap <buffer> <nowait> <silent> <C-L> <Plug>NetrwRefresh
 noremap <buffer> <silent> <M-n> :call AutoPairsJump()
 noremap <buffer> <silent> <M-p> :call AutoPairsToggle()
 inoremap <buffer> <silent>  =AutoPairsDelete()
@@ -278,8 +300,8 @@ setlocal balloonexpr=
 setlocal nobinary
 setlocal nobreakindent
 setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
+setlocal bufhidden=hide
+setlocal nobuflisted
 setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
@@ -305,8 +327,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+if &filetype != 'netrw'
+setlocal filetype=netrw
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -343,19 +365,19 @@ setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
-setlocal modifiable
+setlocal nomodifiable
 setlocal nrformats=bin,octal,hex
 set number
-setlocal number
+setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
-setlocal noreadonly
+setlocal readonly
 set relativenumber
-setlocal relativenumber
+setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
@@ -374,10 +396,10 @@ setlocal spelllang=en
 setlocal spelloptions=
 setlocal statusline=%{lightline#link()}%#LightlineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"|\":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightlineLeft_active_0_1#%#LightlineLeft_active_1#%(\ %R\ %)%{(&readonly)&&(1)?\"|\":\"\"}%(\ %t\ %)%#LightlineLeft_active_1_2#%#LightlineLeft_active_2#%(\ %{GetAsyncrunStatus()}\ %)%#LightlineLeft_active_2_3#%#LightlineMiddle_active#%=%#LightlineRight_active_2_3#%#LightlineRight_active_2#%(\ %{&fenc!=#\"\"?&fenc:&enc}\ %)%#LightlineRight_active_1_2#%#LightlineRight_active_1#%(\ %3p%%\ %)%#LightlineRight_active_0_1#%#LightlineRight_active_0#%(\ %3l:%-2c\ %)
 setlocal suffixesadd=
-setlocal swapfile
+setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != 'netrw'
+setlocal syntax=netrw
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -395,18 +417,19 @@ setlocal vartabstop=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal wrap
+setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 24) / 48)
+let s:l = 8 - ((7 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 8
 normal! 0
+lcd ~/work/vimrc
 tabnext 1
-badd +1 vimrc
+badd +40 ~/work/vimrc/vimrc
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
