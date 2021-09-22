@@ -36,8 +36,8 @@ colorscheme base16-default-dark
 nnoremap <C-c> :q<cr>
 nnoremap <C-s> :w<cr>
 inoremap <C-s> <Esc>:w<cr>
-nnoremap <C-S> :w !sudo tee %<cr>
-inoremap <C-S> <Esc>:w !sudo tee %<cr>
+" nnoremap <C-S> :w !sudo tee %<cr>
+" inoremap <C-S> <Esc>:w !sudo tee %<cr>
 
 " tmux style window operations
 nnoremap <C-h>o <C-w><C-w>
@@ -48,8 +48,10 @@ nnoremap <C-h>" <C-w>s
 nnoremap <C-h>% <C-w>v
 
 nnoremap <esc>e :bp<cr>
+" nnoremap <esc>E :bn<cr>
 nnoremap <C-x> :bd<cr>
 nnoremap <esc>w gt
+" nnoremap <esc>W gT
 
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
@@ -65,13 +67,13 @@ inoremap <C-B> <Left>
 inoremap <esc>f <S-Right>
 inoremap <esc>b <S-Left>
 
-nnoremap <leader>n :Vex<cr>
+nnoremap <leader>n :Lexplore<cr>:vertical resize 50<cr>
 nnoremap <leader>m :marks<cr>
 
 " Plugins
 
 cnoreabbrev f Leaderf
-nnoremap <leader>t :Leaderf --left bufTag<cr><Tab>
+nnoremap <leader>t :Leaderf --left bufTag<cr><Tab>:vertical resize 80<cr>
 nnoremap <leader>r :Leaderf mru<cr>
 nnoremap <leader>g :Leaderf rg<cr>
 let g:Lf_GtagsAutoGenerate = 1
