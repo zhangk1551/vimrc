@@ -13,7 +13,6 @@ set number
 set relativenumber
 set cursorline
 
-set textwidth=80
 set ruler
 
 set showmatch
@@ -131,6 +130,7 @@ nmap <esc>d <Plug>(coc-definition)
 nmap <esc>s <Plug>(coc-type-definition)
 nmap <esc>f <Plug>(coc-references)
 nnoremap <leader>ff :call CocAction('format')<cr>
+nnoremap <leader>fi :CocCommand pyright.organizeimports<cr>
 noremap <leader>o  :<C-u>CocList outline<cr>
 
 let g:coc_global_extensions = ['coc-html', 'coc-json','coc-pyright', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-word', 'coc-xml']

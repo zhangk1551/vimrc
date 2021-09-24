@@ -5,7 +5,7 @@ set cpo&vim
 inoremap <silent> <expr> <Plug>(coc-snippets-expand-jump) coc#_insert_key('notify', 'snippets-expand-jump', 1)
 inoremap <silent> <expr> <Plug>(coc-snippets-expand) coc#_insert_key('notify', 'snippets-expand', 1)
 inoremap <silent> <Plug>CocRefresh =coc#_complete()
-inoremap <silent> <SNR>31_AutoPairsReturn =AutoPairsReturn()
+inoremap <silent> <SNR>32_AutoPairsReturn =AutoPairsReturn()
 inoremap <C-B> <Left>
 inoremap <C-F> <Right>
 inoremap <C-E> <End>
@@ -199,7 +199,6 @@ set softtabstop=2
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
 set tabline=%!lightline#tabline()
 set termguicolors
-set textwidth=80
 set undodir=~/.vimundo/
 set updatetime=300
 set wildmenu
@@ -208,15 +207,15 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/work/vimrc
+cd ~
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd README.md
-edit README.md
+$argadd work/vimrc/vimrc
+edit work/vimrc/vimrc
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -308,8 +307,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'markdown'
-setlocal filetype=markdown
+if &filetype != 'vim'
+setlocal filetype=vim
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -379,8 +378,8 @@ setlocal statusline=%{lightline#link()}%#LightlineLeft_active_0#%(\ %{lightline#
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'markdown'
-setlocal syntax=markdown
+if &syntax != 'vim'
+setlocal syntax=vim
 endif
 setlocal tabstop=8
 setlocal tagcase=
@@ -389,7 +388,7 @@ setlocal tags=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
-setlocal textwidth=80
+setlocal textwidth=0
 setlocal thesaurus=
 setlocal noundofile
 setlocal undolevels=-123456
@@ -403,14 +402,14 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 2 - ((1 * winheight(0) + 48) / 96)
+let s:l = 128 - ((88 * winheight(0) + 48) / 96)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
-normal! 034|
+keepjumps 128
+normal! 05|
 tabnext 1
-badd +0 README.md
+badd +0 work/vimrc/vimrc
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
