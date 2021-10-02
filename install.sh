@@ -12,6 +12,11 @@ cd pack/plugins/start/LeaderF
 ./install.sh
 cd ../../../../
 
+cd pack/plugins/start/coc.nvim
+yarn install
+yarn build
+cd ../../../../
+
 ./update.sh
 
 mkdir ~/.vimbackup
