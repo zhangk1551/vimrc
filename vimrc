@@ -8,6 +8,7 @@ set termguicolors
 set autoindent
 set expandtab
 set softtabstop=2
+set shiftwidth=4
 
 set number
 set relativenumber
@@ -30,6 +31,9 @@ set wildmode=longest:list,full
 set listchars=tab:»■,trail:■
 set list
 
+set foldmethod=indent
+set nofoldenable
+
 colorscheme base16-default-dark
 
 nnoremap <C-c> :q<cr>
@@ -51,6 +55,8 @@ nnoremap <esc>e :bp<cr>
 nnoremap <C-x> :bd<cr>
 nnoremap <esc>w gt
 " nnoremap <esc>W gT
+nnoremap <C-f> <C-d>
+nnoremap <C-b> <C-u>
 
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
@@ -71,13 +77,21 @@ nnoremap <leader>m :marks<cr>
 
 " Plugins
 
-cnoreabbrev f Leaderf
-nnoremap <leader>t :Leaderf --left bufTag<cr><Tab>:vertical resize 80<cr>
-nnoremap <leader>r :Leaderf mru<cr>
-nnoremap <leader>g :Leaderf rg<cr>
 let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_Gtagslabel = 'native-pygments'
-let g:Lf_Gtagsconf = '/usr/share/gtags/gtags.conf'
+let g:Lf_Gtagsconf = '/etc/gtags/gtags.conf'
+let g:Lf_RgConfig = [
+  \ "--heading"
+\]
+cnoreabbrev f Leaderf
+nnoremap <leader>t :Leaderf --left bufTag --nowrap<cr><Tab>:vertical resize 50<cr>
+nnoremap <leader>r :Leaderf mru<cr><Tab>
+nnoremap <leader>g :Leaderf rg --fullScreen<cr>
+nnoremap <leader>a :<C-U><C-R>=printf("Leaderf! rg --fullScreen -e %s --heading", expand("<cword>"))<CR><cr><Tab>
+" nnoremap <leader>g :<C-U>Leaderf! rg --fullScreen --heading<cr>
+
+nnoremap gh :w<cr>:CocCommand clangd.switchSourceHeader<cr>
+
 
 function! GetAsyncrunSaveAndRunCommand()
   if &ft == 'python'
@@ -107,19 +121,19 @@ set noshowmode
 let g:lightline = {
 \ 'active': {
 \   'left': [ [ 'mode', 'paste' ],
-\             [ 'readonly', 'filename' ],
-\             [ 'asyncrun' ] ],
+\             [ 'gitbranch', 'filename' ],
+\             [ 'readonly' ] ],
 \   'right' : [ [ 'lineinfo' ],
 \               [ 'percent' ],
 \               [ 'fileencoding' ] ],
 \ },
 \ 'inactive': {
 \   'left': [ [ 'filename' ],
-\             [ 'asyncrun' ] ],
+\             [ 'gitbranch' ] ],
 \   'right' : [ ],
 \ },
 \ 'component_function' : {
-\   'asyncrun' : 'GetAsyncrunStatus'
+\   'gitbranch' : 'gitbranch#name'
 \ }
 \}
 
@@ -133,4 +147,4 @@ nnoremap <leader>ff :call CocAction('format')<cr>
 nnoremap <leader>fi :CocCommand pyright.organizeimports<cr>
 noremap <leader>o  :<C-u>CocList outline<cr>
 
-let g:coc_global_extensions = ['coc-html', 'coc-json','coc-pyright', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-word', 'coc-xml']
+let g:coc_global_extensions = ['coc-html', 'coc-json', 'coc-pyright', 'coc-clangd', 'coc-java', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-word', 'coc-xml']
