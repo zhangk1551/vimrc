@@ -50,10 +50,26 @@ nnoremap <C-h>cc <C-w>T
 nnoremap <C-h>" <C-w>s
 nnoremap <C-h>% <C-w>v
 
+" Go to tab by number
+noremap <C-h>1 1gt
+noremap <C-h>2 2gt
+noremap <C-h>3 3gt
+noremap <C-h>4 4gt
+noremap <C-h>5 5gt
+noremap <C-h>6 6gt
+noremap <C-h>7 7gt
+noremap <C-h>8 8gt
+noremap <C-h>9 9gt
+
+" Go to last active tab
+au TabLeave * let g:lasttab = tabpagenr()
+nnoremap <silent> <esc>w :exe "tabn ".g:lasttab<cr>
+vnoremap <silent> <esc>w :exe "tabn ".g:lasttab<cr>
+
 nnoremap <esc>e :bp<cr>
 " nnoremap <esc>E :bn<cr>
 nnoremap <C-x> :bd<cr>
-nnoremap <esc>w gt
+" nnoremap <esc>w gt
 " nnoremap <esc>W gT
 nnoremap <C-f> <C-d>
 nnoremap <C-b> <C-u>
@@ -147,4 +163,4 @@ nnoremap <leader>ff :call CocAction('format')<cr>
 nnoremap <leader>fi :CocCommand pyright.organizeimports<cr>
 noremap <leader>o  :<C-u>CocList outline<cr>
 
-let g:coc_global_extensions = ['coc-html', 'coc-json', 'coc-pyright', 'coc-clangd', 'coc-java', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-word', 'coc-xml']
+let g:coc_global_extensions = ['coc-html', 'coc-json', 'coc-pyright', 'coc-clangd', 'coc-java', 'coc-sh', 'coc-snippets', 'coc-tsserver', 'coc-word', 'coc-xml', 'coc-yaml']
